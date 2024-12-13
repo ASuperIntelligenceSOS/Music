@@ -84,7 +84,7 @@
         function playMusic() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                audio = new Audio('VOTRE_LIEN_WAV_DIRECT'); // Remplacez VOTRE_LIEN_WAV_DIRECT par votre lien.
+                audio = new Audio('https://drive.google.com/uc?id=1dI8auDtpv49GTG22qEijqaXQUbRD0BYI&export=download');
                 const source = audioContext.createMediaElementSource(audio);
                 analyser = audioContext.createAnalyser();
                 source.connect(analyser);

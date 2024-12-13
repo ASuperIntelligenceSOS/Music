@@ -11,15 +11,16 @@
             color: #fff; /* Texte blanc */
             margin: 0;
             padding: 0;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
-            height: 100vh; /* Hauteur totale de la fenêtre */
-            overflow: hidden; /* Empêche le défilement */
+            min-height: 100vh; /* Hauteur totale de la fenêtre */
+            overflow-y: auto; /* Permet le défilement vertical */
         }
         h1 {
-            margin: 0;
+            margin: 10px 0;
             padding: 10px;
             font-size: clamp(1.5em, 5vw, 2.5em); /* Taille adaptative */
             text-align: center;
@@ -27,7 +28,7 @@
         .video-container {
             position: relative;
             width: 100%; /* Occupe toute la largeur */
-            height: 80%; /* Prend 80% de la hauteur de l'écran */
+            height: 70%; /* Prend 70% de la hauteur de l'écran */
             overflow: hidden;
         }
         .video-container iframe {
@@ -41,7 +42,7 @@
             pointer-events: none; /* Rend la vidéo non cliquable */
         }
         p {
-            margin: 0;
+            margin: 10px 0;
             padding: 10px;
             font-size: clamp(1em, 3vw, 1.2em); /* Taille adaptative */
             text-align: center;
@@ -60,7 +61,7 @@
         // Redirection automatique après 46 secondes
         setTimeout(function() {
             window.location.href = "https://calcatoggio.com";
-        }, 23000); // 23000 ms = 23 secondes
+        }, 22000); // 22000 ms = 22 secondes
     </script>
 </head>
 <body>

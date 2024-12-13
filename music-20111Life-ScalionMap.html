@@ -28,8 +28,10 @@
         .video-container {
             position: relative;
             width: 100%; /* Occupe toute la largeur */
-            height: 70%; /* Prend 70% de la hauteur de l'écran */
-            overflow: hidden;
+            max-width: 900px; /* Taille maximale sur grands écrans */
+            aspect-ratio: 16 / 9; /* Proportions 16:9 pour la vidéo */
+            margin: 10px auto;
+            background-color: #000; /* Fond noir */
         }
         .video-container iframe {
             position: absolute;
@@ -68,7 +70,7 @@
     <!-- Conteneur pour la vidéo -->
     <div class="video-container">
         <iframe 
-            src="https://www.youtube.com/embed/U4bp6SW5S3E?autoplay=1&mute=1&loop=1&playlist=U4bp6SW5S3E&rel=0&controls=0&modestbranding=1&playsinline=1" 
+            src="https://www.youtube.com/embed/U4bp6SW5S3E?autoplay=1&mute=1&loop=1&playlist=U4bp6SW5S3E&rel=0&controls=0&modestbranding=1" 
             allow="autoplay; encrypted-media; fullscreen" 
             allowfullscreen>
         </iframe>

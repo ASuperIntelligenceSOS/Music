@@ -17,27 +17,28 @@
             height: 100vh;
             overflow: hidden;
         }
-        .icons {
-            position: absolute;
-            bottom: 10px;
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #1DB954;
+            margin-bottom: 20px;
+        }
+        #controls {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
-        .icons img {
-            width: 50px;
-            height: 50px;
-        }
-        #playButton {
+        #playButton, #muteButton {
             background: #1DB954;
             color: white;
-            font-size: 24px;
+            font-size: 18px;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
             transition: transform 0.2s;
         }
-        #playButton:hover {
+        #playButton:hover, #muteButton:hover {
             transform: scale(1.1);
         }
         canvas {
@@ -48,14 +49,11 @@
     </style>
 </head>
 <body>
-    <button id="playButton">Play</button>
+    <h1>NOW released Worldwide on your favorite streaming platforms!</h1>
 
-    <div class="icons">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Spotify_logo_without_text.svg/512px-Spotify_logo_without_text.svg.png" alt="Spotify">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YouTube_music_icon_%282020%29.svg/512px-YouTube_music_icon_%282020%29.svg.png" alt="YouTube Music">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Deezer_Icon.svg/512px-Deezer_Icon.svg.png" alt="Deezer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/TIDAL-Logo.png/512px-TIDAL-Logo.png" alt="Tidal">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Amazon_Music_icon_%28blue%29.svg/512px-Amazon_Music_icon_%28blue%29.svg.png" alt="Amazon Music">
+    <div id="controls">
+        <button id="playButton">Play</button>
+        <button id="muteButton">Mute</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
@@ -64,6 +62,7 @@
         let audio;
         let analyser;
         let dataArray;
+        let isMuted = false;
 
         function setup() {
             createCanvas(windowWidth, windowHeight);
@@ -102,10 +101,20 @@
                     }
                     update();
                 });
+            } else {
+                audio.play();
+            }
+        }
+
+        function toggleMute() {
+            if (audio) {
+                isMuted = !isMuted;
+                audio.muted = isMuted;
             }
         }
 
         document.getElementById('playButton').addEventListener('click', playMusic);
+        document.getElementById('muteButton').addEventListener('click', toggleMute);
     </script>
 </body>
 </html>

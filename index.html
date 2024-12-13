@@ -1,120 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractale Musicale</title>
+    <title>DAFT PUNK - END OF LINE</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: black;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            color: white;
-            height: 100vh;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
             overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
         }
-        h1 {
-            font-size: 24px;
-            text-align: center;
-            color: #1DB954;
-            margin-bottom: 20px;
-        }
-        #controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        #playButton, #muteButton {
-            background: #1DB954;
-            color: white;
-            font-size: 18px;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: transform 0.2s;
-        }
-        #playButton:hover, #muteButton:hover {
-            transform: scale(1.1);
-        }
-        canvas {
+
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                padding: 10px;
+            }
+        }
+
+        @media (hover: hover) {
+            .video-wrapper:hover {
+                transform: scale(1.01);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>NOW released Worldwide on your favorite streaming platforms!</h1>
-
-    <div id="controls">
-        <button id="playButton">Play</button>
-        <button id="muteButton">Mute</button>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/OIZNL1GMeHg?autoplay=0&rel=0&showinfo=0&modestbranding=1"
+                title="DAFT PUNK - END OF LINE"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <script>
-        let audioContext;
-        let audio;
-        let analyser;
-        let dataArray;
-        let isMuted = false;
-
-        function setup() {
-            createCanvas(windowWidth, windowHeight);
-            noLoop();
-        }
-
-        function draw() {
-            background(0);
-            if (dataArray) {
-                let radius = map(dataArray[0], 0, 255, 50, 300);
-                noFill();
-                stroke(0, 255, 150);
-                strokeWeight(2);
-                ellipse(width / 2, height / 2, radius);
-            }
-        }
-
-        function playMusic() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                audio = new Audio('https://drive.google.com/uc?id=1dI8auDtpv49GTG22qEijqaXQUbRD0BYI&export=download');
-                const source = audioContext.createMediaElementSource(audio);
-                analyser = audioContext.createAnalyser();
-                source.connect(analyser);
-                analyser.connect(audioContext.destination);
-                analyser.fftSize = 256;
-                dataArray = new Uint8Array(analyser.frequencyBinCount);
-                audio.play();
-
-                loop();
-                audio.addEventListener('play', () => {
-                    function update() {
-                        analyser.getByteFrequencyData(dataArray);
-                        draw();
-                        requestAnimationFrame(update);
-                    }
-                    update();
-                });
-            } else {
-                audio.play();
-            }
-        }
-
-        function toggleMute() {
-            if (audio) {
-                isMuted = !isMuted;
-                audio.muted = isMuted;
-            }
-        }
-
-        document.getElementById('playButton').addEventListener('click', playMusic);
-        document.getElementById('muteButton').addEventListener('click', toggleMute);
-    </script>
 </body>
 </html>

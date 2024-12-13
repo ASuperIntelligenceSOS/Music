@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractale Musicale</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .icons {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .icons img {
+            width: 50px;
+            height: 50px;
+        }
+        #playButton {
+            background: #1DB954;
+            color: white;
+            font-size: 24px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        #playButton:hover {
+            transform: scale(1.1);
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="playButton">Play</button>
+
+    <div class="icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Spotify_logo_without_text.svg/512px-Spotify_logo_without_text.svg.png" alt="Spotify">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YouTube_music_icon_%282020%29.svg/512px-YouTube_music_icon_%282020%29.svg.png" alt="YouTube Music">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Deezer_Icon.svg/512px-Deezer_Icon.svg.png" alt="Deezer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/TIDAL-Logo.png/512px-TIDAL-Logo.png" alt="Tidal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Amazon_Music_icon_%28blue%29.svg/512px-Amazon_Music_icon_%28blue%29.svg.png" alt="Amazon Music">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script>
+        let audioContext;
+        let audio;
+        let analyser;
+        let dataArray;
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            noLoop();
+        }
+
+        function draw() {
+            background(0);
+            if (dataArray) {
+                let radius = map(dataArray[0], 0, 255, 50, 300);
+                noFill();
+                stroke(0, 255, 150);
+                strokeWeight(2);
+                ellipse(width / 2, height / 2, radius);
+            }
+        }
+
+        function playMusic() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                audio = new Audio('VOTRE_LIEN_WAV_DIRECT'); // Remplacez VOTRE_LIEN_WAV_DIRECT par votre lien.
+                const source = audioContext.createMediaElementSource(audio);
+                analyser = audioContext.createAnalyser();
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                analyser.fftSize = 256;
+                dataArray = new Uint8Array(analyser.frequencyBinCount);
+                audio.play();
+
+                loop();
+                audio.addEventListener('play', () => {
+                    function update() {
+                        analyser.getByteFrequencyData(dataArray);
+                        draw();
+                        requestAnimationFrame(update);
+                    }
+                    update();
+                });
+            }
+        }
+
+        document.getElementById('playButton').addEventListener('click', playMusic);
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutons en Mode Sombre</title>
+    <title>Boutons personnalisés</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #000; /* Fond noir pour le mode sombre */
+            background-color: #000; /* Fond noir */
             color: white; /* Texte blanc pour le contraste */
         }
 
@@ -25,6 +25,7 @@
             max-width: 400px;
         }
 
+        /* Style commun des boutons */
         .button-container a {
             text-decoration: none;
             font-size: 18px;
@@ -32,21 +33,43 @@
             text-align: center;
             padding: 15px;
             border-radius: 8px;
-            background-color: #FF4040; /* Rouge des boutons */
-            color: white; /* Texte blanc dans les boutons */
-            transition: background-color 0.3s ease;
+            color: white; /* Texte blanc pour tous les boutons */
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .button-container a:hover {
+        /* Bouton "Site de Calcatoggio" (Vert forêt) */
+        .calcatoggio {
+            background-color: #228B22; /* Vert forêt */
+        }
+
+        .calcatoggio:hover {
+            background-color: #1E7A1E; /* Vert forêt foncé au survol */
+        }
+
+        /* Bouton "Restaurant Pizzeria" (Rouge) */
+        .restaurant {
+            background-color: #FF4040; /* Rouge vif */
+        }
+
+        .restaurant:hover {
             background-color: #CC3333; /* Rouge plus sombre au survol */
+        }
+
+        /* Bouton "Chanson d'un Artiste" (Violet) */
+        .chanson {
+            background-color: #800080; /* Violet */
+        }
+
+        .chanson:hover {
+            background-color: #6A006A; /* Violet foncé au survol */
         }
     </style>
 </head>
 <body>
     <div class="button-container">
-        <a href="https://calcatoggio.fr/" target="_blank">Site de Calcatoggio</a>
-        <a href="https://ufornu-pizzeriacalcatoggio.com/" target="_blank">Restaurant Pizzeria</a>
-        <a href="https://youtu.be/OIZNL1GMeHg?si=V-jDcxdETR1_J8W9" target="_blank">Chanson d'un Artiste</a>
+        <a href="https://calcatoggio.fr/" target="_blank" class="calcatoggio">Site de Calcatoggio</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/" target="_blank" class="restaurant">Restaurant Pizzeria</a>
+        <a href="https://youtu.be/OIZNL1GMeHg?si=V-jDcxdETR1_J8W9" target="_blank" class="chanson">Chanson d'un Artiste</a>
     </div>
 </body>
 </html>

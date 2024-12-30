@@ -3,73 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutons personnalisés</title>
+    <meta name="description" content="Découvrez U Fornu à Calcatoggio : restaurant Corse, pizzeria au feu de bois. Vivez une expérience unique avec nos pizzas et une ambiance authentique.">
+    <meta name="keywords" content="Calcatoggio, restaurant Corse, pizzeria, feu de bois, U Fornu">
+    <meta property="og:title" content="U Fornu - Restaurant à Calcatoggio">
+    <meta property="og:description" content="Une expérience culinaire unique en Corse : découvrez U Fornu, restaurant traditionnel et pizzeria au feu de bois à Calcatoggio.">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>U Fornu - Restaurant à Calcatoggio</title>
     <style>
+        /* Styles généraux */
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            background-color: #000; /* Fond noir */
-            color: white; /* Texte blanc pour le contraste */
+            background: linear-gradient(145deg, #000000, #121212);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
         }
 
+        /* Titre principal */
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            background: linear-gradient(90deg, #FF4040, #800080);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+        }
+
+        /* Paragraphe d'introduction */
+        p {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Conteneur des boutons */
         .button-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
+            margin: 40px auto;
             width: 90%;
             max-width: 400px;
         }
 
-        /* Style commun des boutons */
+        /* Boutons interactifs */
         .button-container a {
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             text-align: center;
             padding: 15px;
-            border-radius: 8px;
-            color: white; /* Texte blanc pour tous les boutons */
+            border-radius: 30px;
+            color: white;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        /* Bouton "Site de Calcatoggio" (Gris) */
+        /* Bouton "Calcatoggio" (gris) */
         .calcatoggio {
             background-color: #808080; /* Gris */
         }
 
         .calcatoggio:hover {
             background-color: #696969; /* Gris foncé au survol */
+            transform: scale(1.1);
         }
 
-        /* Bouton "Restaurant Pizzeria" (Rouge) */
+        /* Bouton "Restaurant Pizzeria" (rouge) */
         .restaurant {
             background-color: #FF4040; /* Rouge vif */
         }
 
         .restaurant:hover {
             background-color: #CC3333; /* Rouge plus sombre au survol */
+            transform: scale(1.1);
         }
 
-        /* Bouton "Chanson d'un Artiste" (Gris) */
+        /* Bouton "Chanson d'un Artiste" (gris) */
         .chanson {
             background-color: #808080; /* Gris */
         }
 
         .chanson:hover {
             background-color: #696969; /* Gris foncé au survol */
+            transform: scale(1.1);
+        }
+
+        /* Section de pied de page */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        footer a {
+            color: #FF4040;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <!-- Titre principal -->
+    <h1>U Fornu - Restaurant à Calcatoggio</h1>
+
+    <!-- Paragraphe introductif -->
+    <p>Découvrez une expérience culinaire unique en Corse : des pizzas au feu de bois, des spécialités locales et une ambiance authentique.</p>
+
+    <!-- Boutons interactifs -->
     <div class="button-container">
         <a href="https://calcatoggio.fr/" target="_blank" class="calcatoggio">Site de Calcatoggio</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/" target="_blank" class="restaurant">Restaurant Pizzeria</a>
         <a href="https://youtu.be/OIZNL1GMeHg?si=V-jDcxdETR1_J8W9" target="_blank" class="chanson">Chanson d'un Artiste</a>
     </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>© 2024 U Fornu - Tous droits réservés. Site développé avec ❤️ pour Calcatoggio.</p>
+        <p>Pour toute question, contactez-nous à <a href="mailto:contact@ufornu.com">contact@ufornu.com</a>.</p>
+    </footer>
 </body>
 </html>

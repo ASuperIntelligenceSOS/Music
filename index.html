@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutons de Navigation</title>
+    <title>Boutons en Mode Sombre</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,8 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f9f9f9;
+            background-color: #000; /* Fond noir pour le mode sombre */
+            color: white; /* Texte blanc pour le contraste */
         }
 
         .button-container {
@@ -31,13 +32,13 @@
             text-align: center;
             padding: 15px;
             border-radius: 8px;
-            background-color: #007BFF;
-            color: white;
+            background-color: #FF4040; /* Rouge des boutons */
+            color: white; /* Texte blanc dans les boutons */
             transition: background-color 0.3s ease;
         }
 
         .button-container a:hover {
-            background-color: #0056b3;
+            background-color: #CC3333; /* Rouge plus sombre au survol */
         }
     </style>
 </head>

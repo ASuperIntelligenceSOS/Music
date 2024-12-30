@@ -3,79 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20111 Life - ScalionMap</title>
+    <title>Boutons de Navigation</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
         }
 
-        .video-container {
-            width: 100%;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 90%;
+            max-width: 400px;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
+        .button-container a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s ease;
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .video-container {
-                padding: 10px;
-            }
-        }
-
-        @media (hover: hover) {
-            .video-wrapper:hover {
-                transform: scale(1.01);
-            }
+        .button-container a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/OIZNL1GMeHg?autoplay=0&rel=0&showinfo=0&modestbranding=1"
-                title="20111 Life - ScalionMap"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
+    <div class="button-container">
+        <a href="https://calcatoggio.fr/" target="_blank">Site de Calcatoggio</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/" target="_blank">Restaurant Pizzeria</a>
+        <a href="https://youtu.be/OIZNL1GMeHg?si=V-jDcxdETR1_J8W9" target="_blank">Chanson d'un Artiste</a>
     </div>
 </body>
 </html>
